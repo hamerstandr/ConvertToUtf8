@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
+using Microsoft.Win32;
 
 namespace ConvertToUtf8
 {
@@ -52,6 +53,22 @@ namespace ConvertToUtf8
                 TextMasege.Text = "Saved.";
                 TextMasege.Foreground = Brushes.DarkGreen;
             } catch { }
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.ShowDialog();
+
+            try
+            {
+                var arabic = Encoding.GetEncoding(1256);
+                StreamReader reader = new StreamReader(dialog.FileName, arabic);
+                str = reader.ReadToEnd();
+                reader.Close();
+                TextBox1.Text = str;
+            }
+            catch { }
         }
     }
 }

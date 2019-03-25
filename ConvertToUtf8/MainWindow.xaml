@@ -6,9 +6,23 @@
                       Height="356"
                       Width="525" Icon="Icon.ico">
     <Grid>
-        <TextBox x:Name="TextBox1" Height="268" Margin="0,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" AcceptsReturn="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" Controls:ScrollViewerHelper.IsHorizontalScrollWheelEnabled="True"/>
-        <Button Content="Save" Margin="0,0,10,4" VerticalAlignment="Bottom" Click="Button_Click" HorizontalAlignment="Right" Width="75"/>
-        <TextBlock x:Name="TextMasege" HorizontalAlignment="Left" Margin="10,0,0,16" TextWrapping="Wrap" Text="" Height="16" VerticalAlignment="Bottom"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Menu  VerticalAlignment="Top" Grid.Row="0">
+            <MenuItem Header="File">
+                <MenuItem Header="Open(arabic 1256)" Click="MenuItem_Click"/>
+                <MenuItem Header="Save (utf-8)" Click="Button_Click"/>
+            </MenuItem>
+            <MenuItem Header="Encoder">
+                <MenuItem Header="Open(arabic 1256)" Click="MenuItem_Click"/>
+            </MenuItem>
+        </Menu>
+
+        <TextBox x:Name="TextBox1" Margin="0,4" TextWrapping="Wrap" AcceptsReturn="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" Controls:ScrollViewerHelper.IsHorizontalScrollWheelEnabled="True" Grid.Row="1"/>
+        <TextBlock x:Name="TextMasege" HorizontalAlignment="Left" Margin="10,0,0,16" TextWrapping="Wrap" Text="" Height="16" VerticalAlignment="Bottom" Grid.Row="1"/>
+        <Button Content="Save" Margin="0,0,10,4" VerticalAlignment="Bottom" Click="Button_Click" HorizontalAlignment="Right" Width="75" Grid.Row="1" Visibility="Hidden"/>
 
     </Grid>
 </Controls:MetroWindow>
